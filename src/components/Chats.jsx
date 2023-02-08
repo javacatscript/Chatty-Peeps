@@ -7,16 +7,17 @@ import { db } from "../firebase";
 // this component displays all the active user chats on the left side 
 
 const Chats = () => {
+  
   const [chats, setChats] = useState([]);
-
+  console.log(chats)
   const { currentUser } = useContext(AuthContext);
   const {dispatch} = useContext(ChatContext);
 
   useEffect(() => {
     //fetching chats using useEffect hook
-    const getChats = () => {
+     const getChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
-        setChats(doc.data());
+        setChats(prev => prev = doc.data());
       });
 
       //clearing the unsub function call
@@ -37,7 +38,7 @@ const Chats = () => {
 
   return (
     <div className="div--chats">
-      {Object.entries(chats)?.sort((a,b) => b[1].date-a[1].date).map((chat) => (
+      {chats && Object.entries(chats).sort((a,b) => b[1].date-a[1].date).map((chat) => (
         <div className="div--userChat" key={chat[0]} onClick={() => handleSelect(chat[1].userInfo)}>
           <img
             src={chat[1].userInfo.photoURL}

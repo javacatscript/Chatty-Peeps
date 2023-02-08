@@ -51,9 +51,9 @@ const Login = () => {
 
           <li>
             <div>
-              <span>rupank@gmail.com</span>
+              <span>test@gmail.com</span>
               <span> | </span>
-              <span>rupank123</span>
+              <span>Test@123</span>
             </div>
           </li>
         </ul>
