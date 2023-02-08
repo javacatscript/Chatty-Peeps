@@ -1,11 +1,18 @@
 body {
-    margin: 0px; 
-  }
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
 
 // styles for Register and Login pages
 
 .div--formContainer {
-  background-color: #a7bcff;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -35,12 +42,17 @@ body {
     form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 25px;
 
       input {
         padding: 12px;
         border: none;
-        border-bottom: 1px solid grey;
+        outline: none;
+        width: 250px;
+        border-bottom: 1px solid #a7bcff;
+        &::placeholder {
+          color: rgb(175, 175, 175);
+        }
       }
 
       button {
@@ -50,12 +62,26 @@ body {
         font-weight: bold;
         border: none;
         cursor: pointer;
+        border-radius: 2px;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: blue;
+        font-size: 11px;
+        cursor: pointer;
+
+        img {
+          width: 32px;
+        }
       }
     }
 
     p {
       color: rgb(69, 69, 70);
-      font-size: 13px;
+      font-size: 12px;
       margin-top: 10px;
     }
   }
@@ -64,16 +90,22 @@ body {
 // styles for Home page
 
 .div--home {
-  background-color: #a7bcff;
+  background: rgb(148, 187, 233);
+  background: radial-gradient(
+    circle,
+    rgba(148, 187, 233, 1) 0%,
+    rgba(225, 161, 218, 1) 30%,
+    rgba(164, 174, 223, 1) 100%
+  );
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 
   .div--container {
-    border: 1px solid white;
-    border-radius: 10px;
-    width: 70%;
+    // border: 1px solid white;
+    border-radius: 20px;
+    width: 60%;
     height: 85vh;
     display: flex;
     overflow: hidden;
@@ -82,19 +114,31 @@ body {
 
     .div--sidebar {
       flex: 1;
-      background-color: #5d5b8d;
-
+      background: rgb(42, 59, 119);
+      background: linear-gradient(
+        180deg,
+        rgba(42, 59, 119, 1) 2%,
+        rgba(42, 59, 119, 1) 9%,
+        rgba(252, 70, 107, 1) 178%
+      );
       .div--navbar {
         display: flex;
         align-items: center;
-        background-color: rgb(62, 3, 80);
-        height: 50px;
+        background: rgb(42, 59, 119);
+        background: linear-gradient(
+          100deg,
+          rgba(42, 59, 119, 1) 2%,
+          rgba(42, 59, 119, 1) 9%,
+          rgb(253, 90, 123) 498%
+        );
+        height: 45px;
         padding: 10px;
         justify-content: space-between;
         color: white;
 
         .span--logo {
           font-weight: bold;
+          letter-spacing: 1px;
         }
 
         .div--user {
@@ -104,27 +148,38 @@ body {
 
           img {
             background-color: #ddddf7;
-            height: 30px;
-            width: 30px;
+            height: 33px;
+            width: 33px;
             border-radius: 50%;
             object-fit: cover;
           }
 
-          button {
-            background-color: #5d5b8d;
-            color: rgb(247, 246, 246);
-            font-size: 11px;
-            border: none;
+          // button {
+          //   background-color: #5d5b8d;
+          //   color: rgb(247, 246, 246);
+          //   font-size: 11px;
+          //   border: none;
+          //   cursor: pointer;
+          //   border-radius: 2px;
+          //   height: 25px;
+          //   width: 52px;
+          //   text-align: center;
+          //   letter-spacing: 1px;
+          // }
+
+          .logout {
             cursor: pointer;
-            border-radius: 2px;
-            height: 18px;
-            width: 55px;
+            height: 20px;
+            width: 20px;
+            margin: 5px;
           }
         }
       }
-      
+
+      // search component
+
       .div--search {
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid rgb(199, 176, 253);
 
         .div--searchForm {
           padding: 10px;
@@ -135,13 +190,17 @@ body {
             color: white;
             outline: none;
 
-            &::placeholder{
-                color: lightgray;
+            &::placeholder {
+              color: rgb(170, 170, 170);
+              font-size: smaller;
+              letter-spacing: 0.5px;
             }
           }
         }
       }
- 
+
+      // styles for Chats component
+
       .div--userChat {
         padding: 10px;
         display: flex;
@@ -150,8 +209,8 @@ body {
         color: white;
         cursor: pointer;
 
-        &:hover{
-            background-color: #2f2d2f;
+        &:hover {
+          background-color: #46003c;
         }
 
         img {
@@ -161,15 +220,17 @@ body {
           object-fit: cover;
         }
 
-        .div--userChatInfo{
-            span{
-                font-size: 18px;
-                font-weight: bold;
-            }
-            p{
-                font-size: 14px;
-                color: lightgray;
-            }
+        .div--userChatInfo {
+          span {
+            font-size: 14px;
+            font-weight: 400;
+          }
+          p {
+            font-size: 12px;
+            color: lightgray;
+            margin: 0;
+            padding: 0;
+          }
         }
       }
     }
@@ -179,78 +240,110 @@ body {
     .div--chat {
       flex: 2;
 
-      .div--chatInfo{
-        height: 50px;
-        background-color: #5d5b8d;
+      .div--chatInfo {
+        height: 45px;
+        background: rgb(42, 59, 119);
+        background: linear-gradient(
+          -190deg,
+          rgba(42, 59, 119, 1) 2%,
+          rgba(42, 59, 119, 1) 9%,
+          rgba(252, 70, 107, 1) 148%
+        );
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 10px;
         color: lightgray;
-      }
 
-      .div--messages{
-        background-color: lightpink;
-        padding: 10px;
-        height: calc(100% - 160px);
-        overflow: scroll;
-
-        .div--message{
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-
-            .div--messageInfo{
-                display: flex;
-                flex-direction: column;
-                color: gray;
-                font-weight: 300;
-
-                img{
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-            }
-
-            .div--messageContent{
-                min-width: 80%;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-
-                p{
-                    background-color: white;
-                    padding: 10px 20px;
-                    border-radius: 0px 10px 10px 10px;
-                    max-width: max-content;
-                }
-
-                img{
-                    width: 50%;
-                }
-
-            }
-
-            &.sender{
-                flex-direction: row-reverse;
-
-                .div--messageContent{
-                    align-items: flex-end;
-                }
-
-                p{
-                    background-color: lightblue;
-                    color: white;
-                    border-radius: 10px 0px 10px 10px;
-                }
-            }
+        span {
+          font-size: 16px;
+          color: white;
+          font-weight: 550;
         }
       }
 
-      .div--input{
-        height: 50px;
+      .div--messages {
+        background-color: pink;
+        padding: 10px;
+        height: calc(100% - 150px);
+        overflow: scroll;
+
+        .div--message {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 20px;
+
+          .div--messageInfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: gray;
+            font-weight: 300;
+
+            img {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+
+            span {
+              font-size: 9px;
+              color: rgb(75, 74, 74);
+              padding-top: 5px;
+            }
+          }
+
+          // styling Message component
+
+          .div--messageContent {
+            min-width: 80%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            p {
+              max-width: 80%;
+              background-color: white;
+              padding: 10px 20px;
+              border-radius: 0px 10px 10px 10px;
+              max-width: max-content;
+              display: flex;
+              flex-wrap: wrap;
+            }
+
+            img {
+              width: 50%;
+            }
+          }
+
+          &.sender {
+            flex-direction: row-reverse;
+
+            .div--messageContent {
+              align-items: flex-end;
+            }
+
+            p {
+              background-color: #471440;
+              color: white;
+              border-radius: 10px 0px 10px 10px;
+            }
+          }
+        }
+      }
+
+      // removing the scroll bar
+
+      .div--messages::-webkit-scrollbar {
+        width: 0 !important;
+      }
+
+      // Input component
+
+      .div--input {
+        height: 45px;
         background-color: white;
         padding: 10px;
         display: flex;
@@ -258,33 +351,44 @@ body {
         justify-content: space-between;
 
         input {
-            width: 100%;
-            border: none;
-            outline: none;
-            color: black;
-            font-size: 18px;
+          width: 100%;
+          border: none;
+          outline: none;
+          color: black;
+          font-size: 16px;
+          display: flex;
 
-            &::placeholder{
-                color: lightgray;
-            }
+          &::placeholder {
+            color: lightgray;
+            font-size: 16px;
+          }
         }
 
-        .div--send{
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .div--send {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-right: 10px;
 
-            img{
-                height: 24px;
-                cursor: pointer;
-            }
-            button{
-                border: none;
-                padding: 10px 15px;
-                color: white;
-                background-color: rgb(67, 67, 173);
-            }
+          img {
+            height: 24px;
+            cursor: pointer;
+          }
 
+          label {
+            img {
+              height: 16px;
+              width: 17px;
+              margin-top: 5px;
+            }
+          }
+          // button{
+          //     border: none;
+          //     padding: 10px 15px;
+          //     color: white;
+          //     background-color: rgb(67, 67, 173);
+          //     border-radius: 2px;
+          // }
         }
       }
     }

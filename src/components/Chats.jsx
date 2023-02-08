@@ -1,39 +1,54 @@
-import React from "react";
+import { doc, onSnapshot } from "firebase/firestore";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
+import { db } from "../firebase";
+
+// this component displays all the active user chats on the left side 
 
 const Chats = () => {
+  const [chats, setChats] = useState([]);
+
+  const { currentUser } = useContext(AuthContext);
+  const {dispatch} = useContext(ChatContext);
+
+  useEffect(() => {
+    //fetching chats using useEffect hook
+    const getChats = () => {
+      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+        setChats(doc.data());
+      });
+
+      //clearing the unsub function call
+      return () => {
+        unsub();
+      };
+    };
+
+    // if user exists then call getChats()
+    currentUser.uid && getChats();
+  }, [currentUser.uid]);
+
+  // dispatching an action once a new user is clicked 
+  const handleSelect = (user) => {
+    dispatch({type:"change_user", payload: user})
+  } 
+  
+
   return (
     <div className="div--chats">
-      <div className="div--userChat">
-        <img
-          src="https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt=""
-        />
-        <div className="div--userChatInfo">
-          <span>Jane</span>
-          <p>Hello</p>
+      {Object.entries(chats)?.sort((a,b) => b[1].date-a[1].date).map((chat) => (
+        <div className="div--userChat" key={chat[0]} onClick={() => handleSelect(chat[1].userInfo)}>
+          <img
+            src={chat[1].userInfo.photoURL}
+            alt=""
+          />
+          <div className="div--userChatInfo">
+            <span>{chat[1].userInfo.displayName}</span>
+            <p>{chat[1].lastMessage?.text}</p>
+          </div>
         </div>
-      </div>
-      <div className="div--userChat">
-        <img
-          src="https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt=""
-        />
-        <div className="div--userChatInfo">
-          <span>Jane</span>
-          <p>Hello</p>
-        </div>
-      </div>
-      <div className="div--userChat">
-        <img
-          src="https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt=""
-        />
-        <div className="div--userChatInfo">
-          <span>Jane</span>
-          <p>Hello</p>
-        </div>
-      </div>
-      
+      ))}
     </div>
   );
 };
