@@ -1,7 +1,6 @@
-# Getting Started with Create React App
+# Chatty Peeps
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+A chat app using React v18 and Firebase v9.17.0. To start chatting with your peeps, visit the desktop version: https://chattypeeps.netlify.app/
 ## Available Scripts
 
 In the project directory, you can run:
