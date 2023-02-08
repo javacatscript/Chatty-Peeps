@@ -17,27 +17,48 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
 
       navigate("/");
-
     } catch (err) {
       setErr(true);
     }
   };
 
   return (
-    <div className="div--formContainer">
-      <div className="div--formWrapper">
-        <span className="span--logo">Chatty Peeps</span>
-        <span className="span--title">Login</span>
-        <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <button>Log In</button>
-        </form>
-        <p>
-          Don't have an account? <Link to="/register">Register</Link>
-        </p>
+    <>
+      <div className="div--formContainer">
+        <div className="div--formWrapper">
+          <span className="span--logo">Chatty Peeps</span>
+          <span className="span--title">Login</span>
+          <form onSubmit={handleSubmit}>
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button>Log In</button>
+          </form>
+          <p>
+            Don't have an account? <Link to="/register">Register</Link>
+          </p>
+        </div>
       </div>
-    </div>
+      <div className="test--details">
+        <ul>
+         <p>  Credentials for testing: </p> 
+          <li>
+            <div>
+              <span>user@gmail.com</span>
+              <span> | </span>
+              <span>user123</span>
+            </div>
+          </li>
+
+          <li>
+            <div>
+              <span>rupank@gmail.com</span>
+              <span> | </span>
+              <span>rupank123</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 };
 
