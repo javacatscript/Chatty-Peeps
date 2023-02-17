@@ -33,14 +33,14 @@ const Login = () => {
             <input type="password" placeholder="Password" />
             <button>Log In</button>
           </form>
-          <p>
+          {/* <p>
             Don't have an account? <Link to="/register">Register</Link>
-          </p>
+          </p> */}
         </div>
       </div>
       <div className="test--details">
         <ul>
-         <p>  Credentials for testing: </p> 
+         <p> <strong>  Dummy user credentials: </strong> </p> 
           <li>
             <div>
               <span>user@gmail.com</span>
@@ -51,11 +51,27 @@ const Login = () => {
 
           <li>
             <div>
-              <span>test@gmail.com</span>
+              <span>luna@gmail.com</span>
               <span> | </span>
-              <span>Test@123</span>
+              <span>luna123</span>
             </div>
           </li>
+
+          <li>
+            <div>
+              <span>montu@gmail.com</span>
+              <span> | </span>
+              <span>montu123</span>
+            </div>
+          </li>
+
+          {/* <li>
+            <div>
+              <span>cookie@gmail.com</span>
+              <span> | </span>
+              <span>cookie123</span>
+            </div>
+          </li> */}
         </ul>
       </div>
     </>

@@ -10,6 +10,26 @@ body {
   );
 }
 
+// responsive styles 
+
+@mixin mobile{
+  @media screen and (max-width: 480px){
+    @content;
+  }
+}
+
+@mixin tablet{
+  @media screen and (max-width: 768px){
+    @content;
+  }
+}
+
+@mixin laptop{
+  @media screen and (max-width: 1200px){
+    @content;
+  }
+}
+
 // styles for Register and Login pages
 
 .div--formContainer {
@@ -20,7 +40,7 @@ body {
 
   .div--formWrapper {
     background-color: white;
-    padding: 20px 60px;
+    padding: 40px 60px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -105,15 +125,26 @@ body {
   .div--container {
     // border: 1px solid white;
     border-radius: 20px;
-    width: 60%;
-    height: 85vh;
+    width: 85%;
+    height: 95vh;
     display: flex;
     overflow: hidden;
+    @include tablet{
+      width: 90%;
+    }
+    @include mobile{
+      width: 100%;
+      border-radius: 0;
+      height: 100vh;
+    }
 
     // styles for Sidebar and Chat components
 
     .div--sidebar {
-      flex: 1;
+      position: relative;
+      flex: 0.8;
+      overflow-y: scroll;
+      overflow-wrap: break-word;
       background: rgb(42, 59, 119);
       background: linear-gradient(
         180deg,
@@ -121,6 +152,9 @@ body {
         rgba(42, 59, 119, 1) 9%,
         rgba(252, 70, 107, 1) 178%
       );
+      @include mobile{
+       flex: 1.4;
+      }
       .div--navbar {
         display: flex;
         align-items: center;
@@ -139,6 +173,9 @@ body {
         .span--logo {
           font-weight: bold;
           letter-spacing: 1px;
+          @include tablet{
+            display: none;
+          }
         }
 
         .div--user {
@@ -154,24 +191,16 @@ body {
             object-fit: cover;
           }
 
-          // button {
-          //   background-color: #5d5b8d;
-          //   color: rgb(247, 246, 246);
-          //   font-size: 11px;
-          //   border: none;
-          //   cursor: pointer;
-          //   border-radius: 2px;
-          //   height: 25px;
-          //   width: 52px;
-          //   text-align: center;
-          //   letter-spacing: 1px;
-          // }
-
           .logout {
             cursor: pointer;
             height: 20px;
             width: 20px;
             margin: 5px;
+            @include tablet{
+              position: absolute;
+              bottom: -5px;
+              right: 4px
+            }
           }
         }
       }
@@ -192,7 +221,7 @@ body {
 
             &::placeholder {
               color: rgb(170, 170, 170);
-              font-size: smaller;
+              font-size: 12px;
               letter-spacing: 0.5px;
             }
           }
@@ -200,14 +229,16 @@ body {
       }
 
       // styles for Chats component
-
+      
       .div--userChat {
         padding: 10px;
+        padding-bottom: 5px;
         display: flex;
         align-items: center;
         gap: 10px;
         color: white;
         cursor: pointer;
+        
 
         &:hover {
           background-color: #46003c;
@@ -233,6 +264,10 @@ body {
           }
         }
       }
+    }
+
+    .div--sidebar::-webkit-scrollbar {
+      width: 0 !important;
     }
 
     // styles for Chat component
@@ -400,7 +435,7 @@ body {
   // background-color: red;
   margin: 0 auto;
   width: 250px;
-  margin-top: -130px;
+  margin-top: -140px;
 
   ul{
 

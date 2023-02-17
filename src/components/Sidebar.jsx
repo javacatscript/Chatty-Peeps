@@ -7,8 +7,10 @@ export const Sidebar = () => {
   return (
     <div className='div--sidebar'>
         <Navbar />
+        <div> 
         <Search />
         <Chats />
+        </div>
     </div>
   )
 }

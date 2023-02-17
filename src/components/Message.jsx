@@ -19,7 +19,7 @@ const Message = ({message}) => {
 
         <div className="div--messageInfo">
             <img src={message.senderId === currentUser.uid ? currentUser.photoURL : data.user.photoURL} alt="" />
-            <span>Just now</span>
+            {/* <span>Just now</span> */}
         </div>
         <div className="div--messageContent">
             <p>{message.text}</p>
